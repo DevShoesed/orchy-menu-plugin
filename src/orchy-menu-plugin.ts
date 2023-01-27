@@ -1,6 +1,6 @@
 import {BehaviorSubject, Observable, ReplaySubject, shareReplay} from 'rxjs'
 
-import {MenuItem, MenuEvent} from './models'
+import {MenuEvent,MenuItem} from './models'
 
 export class OrchyMenuApi {
     private readonly  REGISTER_MENU_EVENT_LABEL = 'registerMenu'

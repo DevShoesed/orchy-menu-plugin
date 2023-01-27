@@ -1,2 +1,2 @@
-export * from './menuItem';
-export * from './myEventBus';
+export * from './menuItem'
+export * from './myEventBus'
