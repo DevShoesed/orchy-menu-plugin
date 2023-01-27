@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit + TS</title>
+    <script type="module" src="/src/orchy-menu-plugin.ts"></script>
+  </head>
+  <body>
+    
+    <script type="module">
+      import {ReplaySubject} from 'rxjs'
+      import {createMenuApi} from './src/orchy-menu-plugin.ts'
+
+      const eventBus = new ReplaySubject()
+
+      const menuPluginApi = createMenuApi(eventBus)
+      
+      menuPluginApi.menuItems$.subscribe(
+        {
+          next: (menuItems) => {
+              const menuContainer = document.querySelector('.menu-container')
+              menuContainer.innerHTML = ''
+              
+              menuItems.forEach((menuItem) => {
+                const link = document.createElement('a')
+                link.href = menuItem.url
+                link.innerHTML = menuItem.label
+
+                menuContainer.appendChild(link)
+              })
+            }
+      })
+
+      setTimeout(() => {
+        menuPluginApi.registerMenu(
+          {label: 'Attempt 2 seconds to see unregisterMenu', url: '#', name: 'unregister-link'}
+        )
+
+        setTimeout(() => {
+          menuPluginApi.unregisterMenu(
+            {name: 'unregister-link'}
+          )
+        }, 2000)
+      }, 1000);
+
+    </script>
+
+    <div class="menu-container"></div>
+    
+  </body>
+</html>

@@ -1,18 +1,52 @@
 {
   "name": "orchy-menu-plugin",
-  "version": "0.0.2",
+  "version": "0.1.0",
+  "type": "module",
   "description": "orchy plugin for menu manager",
-  "main": "dist/index.ts",
-  "types": "dist/index.d.ts",
+  "main": "dist/orchy-menu-plugin.js",
+  "exports": {
+    ".": "./dist/orchy-menu-plugin.js"
+  },
+  "types": "types/orchy-menu-plugin.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "coverage": "pnpm test --coverage",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "prepare": "pnpm build && pnpm lint:fix"
   },
   "author": "Francesco Scarpato",
+  "repository": {
+    "url": "https://github.com/DevShoesed/orchy-menu-plugin"
+  },
   "license": "MIT",
   "dependencies": {
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
-    "typescript": "^4.9.4"
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vitest/coverage-c8": "^0.28.2",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^9.0.0",
+    "happy-dom": "^8.1.5",
+    "prettier": "^2.8.3",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vitest": "^0.28.2"
   }
 }
