@@ -1,5 +1,6 @@
 import {BehaviorSubject, Observable, ReplaySubject, shareReplay} from 'rxjs'
-import {MenuItem, MyEvent} from './types'
+
+import {MenuItem, MenuEvent} from './models'
 
 export class OrchyMenuApi {
     private readonly  REGISTER_MENU_EVENT_LABEL = 'registerMenu'
@@ -15,7 +16,7 @@ export class OrchyMenuApi {
         this._eventBus = eventBus
         
         this._eventBus.subscribe((event) => {
-            const ev = event as MyEvent
+            const ev = event as MenuEvent
             if(ev.label == this.REGISTER_MENU_EVENT_LABEL ) {
                 this.registerMenuAction(ev.payload)
             }
