@@ -1,4 +1,4 @@
-name: orchy-storage-plugin CI
+name: orchy-menu-plugin CI
 
 on:
   push:
