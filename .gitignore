@@ -6,3 +6,5 @@ dist-ssr
 *.local
 
 
+coverage
+stats.html
